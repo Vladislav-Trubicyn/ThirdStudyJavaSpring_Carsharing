@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование машины</title>
+</head>
+<body>
+<h3>Редактирование машины</h3>
+<form th:method="post" th:action="@{/cars/edit}" th:object="${car}">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Марка машины: <input type="text" th:field="*{name}"/></label><br>
+    <label>Цвет машины: <input type="text" th:field="*{color}"/></label><br>
+    <label>Номер машины: <input type="text" th:field="*{number}"/></label><br><br>
+    <input type="submit" value="Изменить"/>
+</form>
+</body>
+</html>

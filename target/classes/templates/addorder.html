@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказ автомобиля</title>
+</head>
+<body>
+<h3>Оформление заказа</h3>
+<form th:method="post" th:action="@{/orders/add}" th:object="${order}">
+    <input type="hidden" name="user_id" th:value="${user_id}"/>
+    <input type="hidden" name="car_id" th:value="${car.getId()}"/>
+    <label>Марка машины: <input type="text" th:name="${car.getName()}" th:value="${car.getName()}" disabled/></label><br>
+    <label>Цвет машины: <input type="text" th:name="${car.getColor()}" th:value="${car.getColor()}" disabled/></label><br>
+    <label>Номер машины: <input type="text" th:name="${car.getNumber()}" th:value="${car.getNumber()}" disabled/></label><br>
+    <label>Укажите свое имя: <input type="text" th:field="*{firstname}"/></label><br>
+    <label>Укажите свою фамилию: <input type="text" th:field="*{surname}"/></label><br>
+    <label>Укажите свою дату рожденья: <input type="text" th:field="*{birthday}"/></label><br>
+    <label>Укажите свой пол: <input type="text" th:field="*{sex}"/></label><br>
+    <label>Укажите свою страну: <input type="text" th:field="*{country}"/></label><br>
+    <label>Укажите свой город: <input type="text" th:field="*{city}"/></label><br>
+    <label>Укажите срок аренды: <input type="text" th:field="*{date}"/></label><br><br>
+    <input type="submit" value="Оформить заказ">
+</form>
+</body>
+</html>

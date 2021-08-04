@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр заявки</title>
+</head>
+<body>
+<h3>Просмотр заявки</h3>
+<form th:method="post" th:action="@{/orders/edit}" th:object="${order}">
+    <input type="hidden" th:name="id" th:value="${order.getId()}"/>
+    <label>Имя пользователя: <input type="text" th:field="*{firstname}" disabled/></label><br>
+    <label>Фамилия пользователя: <input type="text" th:field="*{surname}" disabled/></label><br>
+    <label>Дата рожденья пользователя: <input type="text" th:field="*{birthday}" disabled/></label><br>
+    <label>Пол пользователя: <input type="text" th:field="*{sex}" disabled/></label><br>
+    <label>Страна пользователя: <input type="text" th:field="*{country}" disabled/></label><br>
+    <label>Город пользователя: <input type="text" th:field="*{city}" disabled/></label><br>
+    <label>Cрок аренды: <input type="text" th:field="*{date}" disabled/></label><br>
+    <label>Причина отказа: <input type="text" th:field="*{commentAdmin}"/></label><br>
+    <label>Одобрить заявку: <input type="checkbox" th:field="*{status}"/></label><br><br>
+    <input type="submit" value="Подтвердить">
+</form>
+</body>
+</html>

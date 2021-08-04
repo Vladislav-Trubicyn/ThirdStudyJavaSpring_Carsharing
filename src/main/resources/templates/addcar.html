@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление новой машины в сервис</title>
+</head>
+<body>
+<h3>Добавление новой машины в сервис</h3>
+<form th:method="post" th:action="@{/cars/addcar}" th:object="${car}">
+    <label>Марка машины: <input type="text" th:field="*{name}"/></label><br>
+    <label>Цвет машины: <input type="text" th:field="*{color}"/></label><br>
+    <label>Номер машины: <input type="text" th:field="*{number}"/></label><br><br>
+    <input type="submit" value="Добавить"/>
+</form>
+</body>
+</html>

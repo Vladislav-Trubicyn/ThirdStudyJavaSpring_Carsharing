@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Список машин</title>
+</head>
+<body>
+<h3>Список машин</h3>
+<th:block th:each="car : ${cars}">
+    <div th:text="'Марка машины: ' + ${car.getName()} + ' Цвет машины: ' + ${car.getColor()} + ' Номер машины: ' + ${car.getNumber()}"></div>
+    <th:block th:if="${roleAdmin}"><a th:href="@{/cars/{id}/edit(id=${car.getId()})}">Изменить</a><br><br></th:block>
+    <th:block th:if="!${roleAdmin}"><a th:href="@{/cars/{id}/select(id=${car.getId()})}">Выбрать</a><br><br></th:block>
+</th:block>
+</body>
+</html>
