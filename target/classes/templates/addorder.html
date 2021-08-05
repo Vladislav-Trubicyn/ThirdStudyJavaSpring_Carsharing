@@ -7,11 +7,12 @@
 <body>
 <h3>Оформление заказа</h3>
 <form th:method="post" th:action="@{/orders/add}" th:object="${order}">
-    <input type="hidden" name="user_id" th:value="${user_id}"/>
-    <input type="hidden" name="car_id" th:value="${car.getId()}"/>
-    <label>Марка машины: <input type="text" th:name="${car.getName()}" th:value="${car.getName()}" disabled/></label><br>
-    <label>Цвет машины: <input type="text" th:name="${car.getColor()}" th:value="${car.getColor()}" disabled/></label><br>
-    <label>Номер машины: <input type="text" th:name="${car.getNumber()}" th:value="${car.getNumber()}" disabled/></label><br>
+    <input type="hidden" name="userId" th:value="${user_id}"/>
+    <input type="hidden" name="carId" th:value="${car.getId()}"/>
+    <label>Марка машины: <input type="text" name="name" th:value="${car.getName()}" disabled/></label><br>
+    <label>Цвет машины: <input type="text" name="color" th:value="${car.getColor()}" disabled/></label><br>
+    <label>Номер машины: <input type="text" name="number" th:value="${car.getNumber()}" disabled/></label><br>
+    <label>Цена машины: <input type="text" name="price" th:value="${car.getPrice()}" disabled/></label><br>
     <label>Укажите свое имя: <input type="text" th:field="*{firstname}"/></label><br>
     <label>Укажите свою фамилию: <input type="text" th:field="*{surname}"/></label><br>
     <label>Укажите свою дату рожденья: <input type="text" th:field="*{birthday}"/></label><br>

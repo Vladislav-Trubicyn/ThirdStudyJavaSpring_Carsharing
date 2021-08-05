@@ -21,13 +21,15 @@ public class Order
     private String date;
     private String commentAdmin;
     private boolean status;
+    private int price;
+    private boolean statusPay;
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }
@@ -37,7 +39,7 @@ public class Order
         return userId;
     }
 
-    public void setUserId(Long user_id)
+    public void setUserId(Long userId)
     {
         this.userId = userId;
     }
@@ -47,7 +49,7 @@ public class Order
         return carId;
     }
 
-    public void setCarId(Long car_id)
+    public void setCarId(Long carId)
     {
         this.carId = carId;
     }
@@ -140,5 +142,25 @@ public class Order
     public void setDate(String date)
     {
         this.date = date;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(int price)
+    {
+        this.price = price;
+    }
+
+    public boolean isStatusPay()
+    {
+        return statusPay;
+    }
+
+    public void setStatusPay(boolean statusPay)
+    {
+        this.statusPay = statusPay;
     }
 }

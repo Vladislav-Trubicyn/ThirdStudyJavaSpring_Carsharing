@@ -56,7 +56,7 @@ public class CarController
 
     @GetMapping("/{id}/edit")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String editSelectedCar(@PathVariable("id") Car car, Model model)
+    public String editSelectedCarAdmin(@PathVariable("id") Car car, Model model)
     {
         model.addAttribute("car", car);
         return "editcar";

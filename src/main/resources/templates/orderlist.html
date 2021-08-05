@@ -10,10 +10,10 @@
 <h3 th:if="${roleAdmin}">Список заявок</h3>
 <h3 th:if="!${roleAdmin}">Мои заявки</h3>
 <th:block th:each="order : ${orders}">
-    <div th:text="'Номер заявки: ' + ${order.getId()} + ' Статус заявки: ' + ${order.isStatus()}"></div>
+    <div th:text="'Номер заявки: ' + ${order.getId()} + ' Статус заявки: ' + ${order.isStatus()}"></div><th:block th:if="${!#strings.equals(order.getCommentAdmin(), '')}"><div th:text="'Комментарий: ' + ${order.getCommentAdmin()}"></div></th:block>
     <th:block th:if="${roleAdmin}"><a th:href="@{/orders/{id}/edit(id=${order.getId()})}">Открыть</a><br><br></th:block>
-    <a if="!${roleAdmin}" th:href="@{/orders/{id}/delete(id=${order.getId()})}">Удалить</a>
-    <th:block th:if="!${roleAdmin} and ${order.isStatus()}"><a th:href="@{/orders/{id}/pay(id=${order.getId()})}">Оплатить</a><br><br></th:block>
+    <a th:if="!${roleAdmin} and !${order.isStatusPay()}" th:href="@{/orders/{id}/delete(id=${order.getId()})}">Удалить </a><a th:if="!${roleAdmin} and ${order.isStatusPay()}" th:href="@{/orders/{id}/return(id=${order.getId()})}">Вернуть</a>
+    <th:block th:if="!${roleAdmin} and ${order.isStatus()} and !${order.isStatusPay()}"><a th:href="@{/orders/{id}/pay(id=${order.getId()})}">Оплатить</a><br><br></th:block>
 </th:block>
 </body>
 </html>

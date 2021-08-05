@@ -75,10 +75,49 @@ public class OrderController
     @PostMapping("/add")
     public String addOrderUser(@ModelAttribute Order order)
     {
+        Optional<Car> car = carService.findById(order.getCarId());
+        order.setPrice(car.get().getPrice());
+
+        order.setCommentAdmin("");
         order.setStatus(false);
         orderService.saveOrder(order);
         return "redirect:/orders";
     }
 
+    @GetMapping("/{id}/delete")
+    public String deleteOrderUser(@PathVariable("id") Order order)
+    {
+        orderService.deleteById(order.getId());
+
+        if(order.isStatusPay() == false)
+        {
+            Optional<Car> car = carService.findById(order.getCarId());
+            car.get().setAccess(true);
+            carService.saveCar(car.get());
+        }
+
+        return "redirect:/orders";
+    }
+
+    @GetMapping("/{id}/pay")
+    public String payOrderUser(@PathVariable("id") Order order)
+    {
+        order.setStatusPay(true);
+        orderService.saveOrder(order);
+        return "redirect:/orders";
+    }
+
+    @GetMapping("/{id}/return")
+    public String returnOrderUser(@PathVariable("id") Order order)
+    {
+        if(order.isStatus() == true)
+        {
+            order.setStatus(false);
+            order.setCommentAdmin("Ожидайте одобрение администратора");
+            orderService.saveOrder(order);
+        }
+
+        return "redirect:/orders";
+    }
 
 }

@@ -15,6 +15,7 @@ public class Car
     private String color;
     private int number;
     private boolean access;
+    private int price;
 
     public Long getId()
     {
@@ -64,5 +65,15 @@ public class Car
     public void setAccess(boolean access)
     {
         this.access = access;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(int price)
+    {
+        this.price = price;
     }
 }

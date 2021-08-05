@@ -25,4 +25,10 @@ public class OrderService
     {
         orderRepository.save(order);
     }
+
+    public void deleteById(Long id)
+    {
+        orderRepository.deleteById(id);
+    }
+
 }
